@@ -28,18 +28,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+//import androidx.navigation.fragment.findNavController
 import com.example.android.firebaseui_login_sample.databinding.FragmentMainBinding
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+
+
 const val TAG = "MainFragment"
 const val SIGN_IN_RESULT_CODE = 1001
 
 class MainFragment : Fragment() {
-
-
-
-
 
     // Get a reference to the ViewModel scoped to this Fragment
     private val viewModel by viewModels<LoginViewModel>()
@@ -64,6 +63,11 @@ class MainFragment : Fragment() {
         binding.authButton.setOnClickListener {
             // TODO call launchSignInFlow when authButton is clicked
             launchSignInFlow()
+        }
+
+        binding.settingsButton.setOnClickListener {
+            val action = MainFragmentDirections.actionMainFragmentToSettingsFragment()
+            findNavController().navigate(action)
         }
     }
 
